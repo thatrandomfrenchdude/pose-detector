@@ -1,6 +1,19 @@
 # Usage Guide
+Detailed instructions on how to use the HRNet Pose Detection application.
 
-## Basic Usage
+**Table of Contents**
+- [The Basics](#the-basics)
+    - [Video Stream](#video-stream)
+    - [Image Processing](#image-processing)
+    - [Testing](#testing)
+    - [NPU Optimization](#npu-optimization)
+    - [Command Line Options](#command-line-options)
+- [Advanced Functionality](#advanced-functionality)
+    - [Camera Setup](#camera-setup)
+    - [Custom Model Path](#custom-model-path)
+    - [API Usage](#api-usage)
+
+## The Basics
 ### Video Stream
 ```bash
 # Run real-time pose detection with NPU acceleration
@@ -11,21 +24,17 @@ python main.py --mediapipe
 ```
 ### Image Processing
 ```bash
-# Process a single image
+# Process single image
 python main.py --image photo.jpg
 
 # Save result
 python main.py --image photo.jpg --output result.jpg
 ```
 
-## 🎮 Extended Usage
-### Camera Setup
+### Testing
 ```bash
-# Check available cameras
-python main.py --info
-
-# Test with specific camera
-python main.py --camera 1
+# Run comprehensive tests
+python main.py --test
 ```
 
 ### NPU Optimization
@@ -36,21 +45,25 @@ python main.py --generate-context
 ```
 This optimization is not required, but skipping this step will make the ONNX Runtime model load more slowly as it needs to convert the model from float16 on each startup.
 
-### Testing
+### Command Line Options
+Get a full list of command line options:
 ```bash
-# Run comprehensive tests
-python main.py --test
+python main.py --help
+```
+
+## Advanced Functionality
+### Camera Setup
+```bash
+# Check available cameras
+python main.py --info
+
+# Test with specific camera
+python main.py --camera 1
 ```
 
 ### Custom Model Path
 ```bash
 python main.py --model path/to/your/model.onnx
-```
-
-### Command Line Options
-Get a full list of command line options:
-```bash
-python main.py --help
 ```
 
 ### API Usage
