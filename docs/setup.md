@@ -3,14 +3,6 @@
 Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
 
 ## System Requirements
-
-### Hardware
-- **Recommended**: Device with Snapdragon X Elite NPU support
-- **Minimum**: Any device with camera support
-- **Storage**: 500MB+ free space for models and dependencies
-
-### Software
-- **Operating System**: Windows 10/11, macOS, or Linux
 - **Python**: Version 3.8 or higher
 - **Camera**: Built-in or external camera for real-time detection
 
@@ -55,22 +47,6 @@ python main.py --test
 # Check system info
 python main.py --info
 ```
-
-## Dependencies Explained
-
-### Core Dependencies
-- **OpenCV**: Computer vision and image processing
-- **NumPy**: Numerical operations and array handling
-
-### NPU Acceleration (Primary)
-- **onnxruntime-qnn**: Qualcomm NPU support for Snapdragon X Elite
-- Provides hardware acceleration for inference
-- Fallback to CPU if NPU unavailable
-
-### MediaPipe (Fallback)
-- **mediapipe**: Google's pose detection framework
-- Cross-platform compatibility
-- Automatic fallback when NPU unavailable
 
 ## Platform-Specific Setup
 
