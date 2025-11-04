@@ -11,6 +11,9 @@ Real-time human pose estimation using **Qualcomm Snapdragon X Elite NPU** with M
 
    # Run with camera stream
    python main.py
+
+   # Run camera stream with MediaPipe fallback
+   python main.py --mediapipe
    ```
 
 ## 📚 Documentation
