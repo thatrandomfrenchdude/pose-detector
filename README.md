@@ -13,6 +13,13 @@ Real-time human pose estimation using **Qualcomm Snapdragon X Elite NPU** with M
    python main.py
    ```
 
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Setup Guide](docs/setup.md)** - Detailed installation instructions
+- **[Usage Guide](docs/usage.md)** - How to use the application and its features
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -21,12 +28,6 @@ Real-time human pose estimation using **Qualcomm Snapdragon X Elite NPU** with M
 4. Ensure all tests pass
 5. Update documentation in `docs/`
 6. Submit pull request
-
-## 📚 Documentation
-
-Comprehensive documentation is available in the `docs/` directory:
-
-- **[Setup Guide](docs/setup.md)** - Detailed installation instructions
 
 ## 📜 License
 
