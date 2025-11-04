@@ -6,6 +6,7 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
 - Python 3.8+
 - Built-in or external camera
 
+### Installation Steps
 1. Clone the Repository and navigate into it:
    ```bash
    git clone https://github.com/thatrandomfrenchdude/pose-detector.git
