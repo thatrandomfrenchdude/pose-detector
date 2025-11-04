@@ -6,147 +6,70 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
 - **Python**: Version 3.8 or higher
 - **Camera**: Built-in or external camera for real-time detection
 
-## Installation Steps
+## Setup Guide
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/thatrandomfrenchdude/pose-detector.git
-cd pose-detector
-```
+1. Clone the Repository and navigate into it:
+   ```bash
+   git clone https://github.com/thatrandomfrenchdude/pose-detector.git
+   cd pose-detector
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python3 -m venv venv
 
-### 2. Create Virtual Environment
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
+   # Windows PowerShell
+   venv\Scripts\Activate.ps1
 
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
+   # macOS/Linux
+   source venv/bin/activate
+   ```
+3. Install dependencies:
+   ```bash
+   # Install base dependencies
+   pip install opencv-python numpy mediapipe
 
-### 3. Install Dependencies
-```bash
-# Install all requirements
-pip install -r requirements.txt
+   # Install ONNX Runtime according to your machine
+   # For Windows on Snapdragon X Elite
+   pip install onnxruntime-qnn
 
-# Or install manually:
-pip install opencv-python numpy onnxruntime-qnn mediapipe
-```
+   # For MacOs/Linux/x86 Windows, use standard ONNX Runtime
+   pip install onnxruntime
+   ```
+4. Download the HRNet model from [Qualcomm AI Hub](https://aihub.qualcomm.com/) and place it as `model/model.onnx`.
+5. Validate the installation and/or run tests:
+   ```bash
+   python scripts/validate_install.py
 
-### 4. Download Model
-1. Visit [Qualcomm AI Hub](https://aihub.qualcomm.com/)
-2. Download the HRNet pose estimation model
-3. Place the model file as `model/model.onnx`
-
-### 5. Verify Installation
-```bash
-# Run basic tests
-python main.py --test
-
-# Check system info
-python main.py --info
-```
-
-## Platform-Specific Setup
-
-### Windows (Snapdragon X Elite)
-```bash
-# Ensure you have the latest Windows updates
-# Install Visual C++ Redistributable if needed
-pip install onnxruntime-qnn
-```
-
-### Windows (Other Processors)
-```bash
-# Use standard ONNX Runtime
-pip install onnxruntime
-# Or keep onnxruntime-qnn (will fallback to CPU)
-```
-
-### macOS/Linux
-```bash
-# MediaPipe typically works best on these platforms
-pip install mediapipe opencv-python numpy
-# ONNX Runtime for CPU
-pip install onnxruntime
-```
-
-## Optimization Steps
-
-### Generate NPU Context (Recommended)
-```bash
-# One-time optimization for 50x faster startup
-python main.py --generate-context
-```
-
-This creates an optimized context model that loads much faster on subsequent runs.
-
-### Camera Setup
-```bash
-# Check available cameras
-python main.py --info
-
-# Test with specific camera
-python main.py --camera 1
-```
-
-## Verification
-
-### Quick Test
-```bash
-python main.py --test
-```
-
-Expected output:
-```
-🧪 Running pose detection tests...
-✅ Package imports: Available
-✅ Model files: Found
-✅ Application: Ready
-🎉 TESTS PASSED - Application ready for use!
-```
-
-### Performance Test
-```bash
-# Run comprehensive test suite
-python tests/test_suite.py
-```
+   # Or run built-in tests
+   python main.py --test
+   ```
+   Expected output:
+    ```
+    🧪 Running pose detection tests...
+    ✅ Package imports: Available
+    ✅ Model files: Found
+    ✅ Application: Ready
+    🎉 TESTS PASSED - Application ready for use!
+    ```
+6. (Optional) Generate the context model for faster startup:
+   ```bash
+   python main.py --generate-context
+   ```
+   This is a one-time operation that takes ~5-10 seconds and reduces future startup times by 50x.
 
 ## Common Setup Issues
 
-### NPU Not Detected
-- Ensure you have a Snapdragon X Elite device
-- Update Windows to latest version
-- Install latest drivers from device manufacturer
-
-### Model File Issues
-- Verify model is exactly at `model/model.onnx`
-- Check file size (should be 5-50MB)
-- Ensure model is from Qualcomm AI Hub
-
-### Camera Not Working
-- Check camera permissions in system settings
-- Try different camera index with `--camera 1`
-- Ensure no other applications are using the camera
-
-### Import Errors
+### ONNXRuntime Collision
+Onnxruntime and onnxruntime-qnn can conflict. If you encounter issues, uninstall both and reinstall only the required package:
 ```bash
 # Reinstall dependencies
-pip uninstall -y opencv-python mediapipe onnxruntime-qnn
-pip install -r requirements.txt
+pip uninstall -y onnxruntime onnxruntime-qnn
+
+# Windows on Snapdragon
+pip install onnxruntime-qnn
+
+# macOS/Linux/x86 Windows
+pip install onnxruntime
 ```
-
-## Next Steps
-
-After successful setup:
-1. Read the [User Guide](user_guide.md) for usage instructions
-2. Check [API Reference](api.md) for programmatic usage
-3. See [Troubleshooting](troubleshooting.md) for common issues
-
-## Support
-
-If you encounter issues:
-1. Check [Troubleshooting](troubleshooting.md)
-2. Run `python main.py --info` and share output
-3. Create an issue with your system details
+### Model Not Found
+Ensure the model file is correctly placed at `model/model.onnx`. If missing, download it from [Qualcomm AI Hub](https://aihub.qualcomm.com/).
