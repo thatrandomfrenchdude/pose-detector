@@ -18,33 +18,6 @@ python main.py --image photo.jpg --output result.jpg
 python main.py --test
 ```
 
-## ✨ Features
-
-- **🔥 NPU Acceleration**: Optimized for Snapdragon X Elite NPU using ONNX Runtime QNN
-- **⚡ Context Caching**: 50x faster startup after one-time optimization
-- **🎯 MediaPipe Fallback**: Automatic fallback for maximum compatibility
-- **📹 Real-time Processing**: Live camera feed with FPS monitoring
-- **🖼️ Image Processing**: Single image pose estimation
-- **🧪 Comprehensive Testing**: Built-in test suite and benchmarks
-
-## 📋 Requirements
-
-### Hardware
-- **Recommended**: Snapdragon X Elite device with NPU support
-- **Minimum**: Any device with camera (uses MediaPipe fallback)
-
-### Software
-- Python 3.8+
-- Model file: `model/model.onnx` (from Qualcomm AI Hub)
-
-### Dependencies
-```
-opencv-python>=4.8.0
-numpy>=1.24.0
-onnxruntime-qnn>=1.16.0  # NPU acceleration
-mediapipe>=0.10.0        # Fallback
-```
-
 ## 🏗️ Installation
 
 ### Automated Setup (Recommended)
@@ -72,8 +45,8 @@ chmod +x scripts/setup.sh
 
 1. **Clone and setup**:
    ```bash
-   git clone <your-repo>
-   cd pose-detection
+   git clone https://github.com/thatrandomfrenchdude/pose-detector.git
+   cd pose-detector
    python -m venv venv
    
    # Windows

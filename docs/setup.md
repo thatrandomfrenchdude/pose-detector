@@ -18,8 +18,8 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
 
 ### 1. Clone Repository
 ```bash
-git clone <your-repository-url>
-cd pose-detection
+git clone https://github.com/thatrandomfrenchdude/pose-detector.git
+cd pose-detector
 ```
 
 ### 2. Create Virtual Environment
