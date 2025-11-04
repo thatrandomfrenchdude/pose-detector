@@ -5,10 +5,7 @@ This directory contains comprehensive documentation for the HRNet Pose Detection
 ## Contents
 
 - [Setup Guide](setup.md) - Installation and configuration instructions
-
-## Quick Start
-
-1. Follow the [Setup Guide](setup.md) to install dependencies
+- [Usage Guide](usage.md) - How to use the application and its features
 
 ## Support
 

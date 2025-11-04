@@ -139,9 +139,6 @@ app.release()
 Comprehensive documentation is available in the `docs/` directory:
 
 - **[Setup Guide](docs/setup.md)** - Detailed installation instructions
-- **[User Guide](docs/user_guide.md)** - Complete usage documentation  
-- **[API Reference](docs/api.md)** - Programming interface details
-- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
 
 ## 📜 License
 
