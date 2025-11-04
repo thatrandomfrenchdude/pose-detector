@@ -6,10 +6,8 @@ opencv-python>=4.8.0
 numpy>=1.24.0
 
 # NPU acceleration (primary)
-onnxruntime-qnn>=1.16.0  # Qualcomm NPU support for Snapdragon X Elite
+# onnxruntime-qnn>=1.16.0  # Qualcomm NPU support for Snapdragon X Elite
+onnxruntime>=1.16.0  # Standard ONNX Runtime (CPU fallback)
 
 # MediaPipe fallback
 mediapipe>=0.10.0
-
-# Optional: Standard ONNX Runtime (CPU fallback)
-# onnxruntime>=1.16.0
