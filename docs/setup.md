@@ -34,7 +34,7 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
    # For MacOs/Linux/x86 Windows, use standard ONNX Runtime
    pip install onnxruntime
    ```
-4. **For Windows on Snapdragon**, download the HRNet model from [Qualcomm AI Hub](https://aihub.qualcomm.com/) and place it as `model/model.onnx`.
+4. **For Windows on Snapdragon**, download the HRNet model from [Qualcomm AI Hub](https://aihub.qualcomm.com/) and place it as `model/model.onnx`. Skip this step for other platforms or to use MediaPipe fallback.
 5. Validate the installation and/or run tests:
    ```bash
    python scripts/validate_install.py
@@ -54,7 +54,7 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
    ```bash
    python main.py --generate-context
    ```
-   This is a one-time operation that takes ~5-10 seconds and reduces future startup times by 50x.
+   This one-time operation takes ~5-10 seconds and makes startup 50x faster.
 
 ### Common Issues
 
