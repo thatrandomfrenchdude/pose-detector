@@ -2,11 +2,11 @@
 
 Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
 
-## System Requirements
+### System Requirements
 - **Python**: Version 3.8 or higher
 - **Camera**: Built-in or external camera for real-time detection
 
-## Setup Guide
+### Step-by-Step Setup
 
 1. Clone the Repository and navigate into it:
    ```bash
@@ -57,9 +57,9 @@ Complete setup instructions for HRNet Pose Detection with NPU Acceleration.
    ```
    This is a one-time operation that takes ~5-10 seconds and reduces future startup times by 50x.
 
-## Common Setup Issues
+### Common Setup Issues
 
-### ONNXRuntime Collision
+#### ONNXRuntime Collision
 Onnxruntime and onnxruntime-qnn can conflict. If you encounter issues, uninstall both and reinstall only the required package:
 ```bash
 # Reinstall dependencies
@@ -71,5 +71,5 @@ pip install onnxruntime-qnn
 # macOS/Linux/x86 Windows
 pip install onnxruntime
 ```
-### Model Not Found
+#### Model Not Found
 Ensure the model file is correctly placed at `model/model.onnx`. If missing, download it from [Qualcomm AI Hub](https://aihub.qualcomm.com/).
