@@ -47,40 +47,13 @@ mediapipe>=0.10.0        # Fallback
 
 ## 🏗️ Installation
 
-### Automated Setup (Recommended)
-
-**Windows:**
-```powershell
-# Run automated setup script
-.\scripts\setup.ps1
-
-# Or with options
-.\scripts\setup.ps1 -SkipTests -SkipVenv
-```
-
-**Linux/macOS:**
-```bash
-# Make script executable and run
-chmod +x scripts/setup.sh
-./scripts/setup.sh
-
-# Or with options
-./scripts/setup.sh --skip-tests --skip-venv
-```
-
-### Manual Setup
-
 1. **Clone and setup**:
    ```bash
    git clone <your-repo>
    cd pose-detection
    python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # Linux/macOS
-   source venv/bin/activate
+   venv\Scripts\activate  # Windows
+   # source venv/bin/activate  # Linux/Mac
    ```
 
 2. **Install dependencies**:
@@ -94,10 +67,6 @@ chmod +x scripts/setup.sh
 
 4. **Verify installation**:
    ```bash
-   # Quick validation
-   python scripts/validate_install.py
-   
-   # Or run tests
    python main.py --test
    ```
 
@@ -181,65 +150,25 @@ python main.py --generate-context
 
 ```
 pose-detection/
-├── src/                    # Source code
-│   └── pose_detection/    # Main package
-│       ├── core/          # Core application logic
-│       ├── detectors/     # NPU and MediaPipe detectors
-│       └── utils/         # Utility functions
-├── tests/                 # Test suite
-│   ├── test_suite.py     # Comprehensive tests
-│   ├── test_runner.py    # Test runner
-│   └── test_*.py         # Individual test modules
-├── docs/                  # Documentation
-│   ├── setup.md          # Setup guide
-│   ├── user_guide.md     # User documentation
-│   ├── api.md            # API reference
-│   └── troubleshooting.md # Troubleshooting guide
-├── scripts/               # Setup and utility scripts
-│   ├── setup.ps1         # Windows setup
-│   ├── setup.sh          # Linux/macOS setup
-│   └── run_tests.*       # Test runners
-├── model/                 # Model files
-│   ├── model.onnx        # Your HRNet model
-│   └── model_ctx.onnx    # Generated context model
-├── main.py               # Entry point
-├── requirements.txt      # Dependencies
-└── README.md            # This file
+├── main.py              # Main application (NPU + MediaPipe)
+├── test_suite.py        # Comprehensive test suite
+├── requirements.txt     # Dependencies
+├── README.md           # This file
+└── model/
+    ├── model.onnx      # Your HRNet model
+    └── model_ctx.onnx  # Generated context model (auto-created)
 ```
 
 ## 🧪 Testing
 
-### Quick Tests
+### Quick Test
 ```bash
-# Basic functionality test
 python main.py --test
-
-# Validate installation
-python scripts/validate_install.py
 ```
 
-### Comprehensive Testing
+### Comprehensive Test Suite
 ```bash
-# Windows
-.\scripts\run_tests.ps1
-
-# Linux/macOS
-./scripts/run_tests.sh
-
-# Manual comprehensive tests
-python tests/test_suite.py
-```
-
-### Test Options
-```bash
-# Quick tests only
-.\scripts\run_tests.ps1 -Quick
-
-# With coverage analysis
-.\scripts\run_tests.ps1 -Coverage
-
-# With code linting
-.\scripts\run_tests.ps1 -Lint
+python test_suite.py
 ```
 
 **Test Coverage:**
@@ -300,7 +229,7 @@ python main.py --help
 
 ### API Usage
 ```python
-from src.pose_detection import PoseDetectionApp
+from main import PoseDetectionApp
 
 # Initialize with NPU (default)
 app = PoseDetectionApp()
@@ -314,26 +243,23 @@ app.process_camera()
 # Get detector info
 info = app.get_info()
 print(f"Using: {info['detector_type']}")
-
-# Always release resources
-app.release()
 ```
 
 ## 🎯 Key Classes
 
-### `PoseDetectionApp` (src/pose_detection/core/app.py)
+### `PoseDetectionApp`
 Main application class that automatically selects best detector:
 - `process_camera()` - Real-time detection
 - `process_image()` - Single image processing
 - `get_info()` - Detector information
 
-### `ONNXPoseDetector` (src/pose_detection/detectors/onnx_detector.py)
+### `ONNXPoseDetector`
 NPU-accelerated detection:
 - Automatic context model detection
 - QNN provider optimization
 - Keypoint extraction and visualization
 
-### `MediaPipePoseDetector` (src/pose_detection/detectors/mediapipe_detector.py)
+### `MediaPipePoseDetector`
 Fallback detection:
 - Google MediaPipe framework
 - 33-point pose landmarks
@@ -370,27 +296,8 @@ python test_suite.py
 1. Fork the repository
 2. Create feature branch
 3. Add tests for new features
-4. Ensure all tests pass: `python tests/test_suite.py` or `./scripts/run_tests.sh`
-5. Update documentation in `docs/`
-6. Submit pull request
-
-### Development Setup
-```bash
-# Use automated setup
-./scripts/setup.sh
-
-# Install development dependencies
-pip install pytest coverage flake8
-
-# Run comprehensive tests
-./scripts/run_tests.sh --coverage --lint
-```
-
-### Project Guidelines
-- Follow the modular structure in `src/`
-- Add comprehensive tests to `tests/`
-- Update documentation in `docs/`
-- Use the provided scripts for setup and testing
+4. Ensure all tests pass: `python test_suite.py`
+5. Submit pull request
 
 ## 📜 License
 
@@ -403,23 +310,6 @@ This project is provided as-is for educational and research purposes.
 - **Microsoft**: ONNX Runtime framework
 - **OpenCV**: Computer vision utilities
 
-## 📚 Documentation
-
-Comprehensive documentation is available in the `docs/` directory:
-
-- **[Setup Guide](docs/setup.md)** - Detailed installation instructions
-- **[User Guide](docs/user_guide.md)** - Complete usage documentation  
-- **[API Reference](docs/api.md)** - Programming interface details
-- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
-
-### Quick Links
-- **First time setup**: Follow [Setup Guide](docs/setup.md)
-- **Having issues**: Check [Troubleshooting](docs/troubleshooting.md)  
-- **Programming**: See [API Reference](docs/api.md)
-- **General usage**: Read [User Guide](docs/user_guide.md)
-
 ---
 
 **🚀 Ready to detect poses with NPU acceleration? Start with `python main.py`!**
-
-For detailed setup instructions, see the [Setup Guide](docs/setup.md).
